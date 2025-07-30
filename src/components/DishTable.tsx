@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import Dish from '../interface/Dish';
+import Dish from '../Interface/Dish'
 
 export default function DishTable( { data } : { data: Dish[] } ) {
 
@@ -17,18 +17,19 @@ export default function DishTable( { data } : { data: Dish[] } ) {
   let getRows = () => {
     if (rows.length) {
       return (
-        rows.slice(0,10).map((row) => (
+        rows.slice(0,100).map((row) => (  //Aquí podremos modificar la cantidad de datos que queremos que se muestren de cero "0" a "100"
           <TableRow
             key={row.position}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <TableCell component="th" scope="row">
-              {row.position}
-            </TableCell>
+            <TableCell component="th" scope="row">{row.position}</TableCell>
             <TableCell align="right">{row.title} ({row.subtitle})</TableCell>
             
             {/* PENDIENTE: Valores a renderizar en cada celda  */}
-            
+            <TableCell align="right">{row.country}</TableCell>
+            <TableCell align="right">{row.rating}</TableCell>
+            <TableCell align="right">{row.iconic}</TableCell>
+            <TableCell align="right">{row.ingredients}</TableCell>
           </TableRow>
         ))
       )
@@ -52,7 +53,10 @@ export default function DishTable( { data } : { data: Dish[] } ) {
             <TableCell align='center'>Plato</TableCell>
             
             {/* PENDIENTE: Cabeceras de las columnas  */}
-
+            <TableCell align="right">País</TableCell>
+            <TableCell align="right">Puntaje</TableCell>
+            <TableCell align="right">Restaurantes Icónicos</TableCell>
+            <TableCell align="right">Ingredientes</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
